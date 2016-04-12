@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8" />
+    <title>TRACKER</title>
+    <script src="build/react.js"></script>
+    <script src="build/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+
+    </script>
+  </head>
+  <body>
+    <!-- <input type="text" name="name" id="source" value=""> -->
+    <div id="container"></div>
+    <script type="text/babel">
+      var link = "https://www.honeybook.com/"
+      // var data = {
+      //   source : this.refs.source.value,
+      //   medium : this.refs.medium.value,
+      //   campaign : this.refs.campaign.value,
+      // }
+      //
+      // var Source = React.createClass({
+      //   getInitialState: function() {
+      //     return {
+      //       source: 'source'
+      //     };
+      //   },
+      //   handleChange: function(event) {
+      //     this.setState({value: event.target.value});
+      //   },
+      //   render: function () {
+      //     var source = this.state.value;
+      //     return (
+      //       <div>
+      //         <input type="text" ref="source" value={source} placeholder="source" onChange={this.handleChange} />
+      //         <p>{source}</p>
+      //       </div>
+      //     );
+      //   }
+      // });
+      //
+      // var Medium = React.createClass({
+      //   getInitialState: function() {
+      //     return {
+      //       medium: 'medium'
+      //     };
+      //   },
+      //   handleChange: function(event) {
+      //     this.setState({value: event.target.value});
+      //   },
+      //   render: function () {
+      //     var medium = this.state.value;
+      //     return (
+      //       <div>
+      //         <input type="text" ref="medium" value={medium} placeholder="medium" onChange={this.handleChange} />
+      //         <p>{medium}</p>
+      //       </div>
+      //     );
+      //   }
+      // });
+      //
+      // var Campaign = React.createClass({
+      //   getInitialState: function() {
+      //     return {
+      //       campaign: 'campaign'
+      //     };
+      //   },
+      //   handleChange: function(event) {
+      //     this.setState({value: event.target.value});
+      //   },
+      //   render: function () {
+      //     var campaign = this.state.value;
+      //     return (
+      //       <div>
+      //         <input type="text" ref="campaign" value={campaign} placeholder="campaign" onChange={this.handleChange} />
+      //         <p>{campaign}</p>
+      //       </div>
+      //     );
+      //   }
+      // });
+
+      var Link = React.createClass({
+        getInitialState: function() {
+          return {
+            source: 'source',
+            medium: 'medium',
+            campaign: 'campaign',
+          };
+        },
+        handleChange: function(event) {
+          if (event.target === this.refs.source) {
+            this.setState({value: event.target.value});
+          }
+          if (event.target === this.refs.medium) {
+            this.setState({value: event.target.value});
+          }
+          if (event.target === this.refs.campaign) {
+            this.setState({value: event.target.value});
+          }
+        },
+        render: function () {
+          var source = this.state.value;
+          var medium = this.state.value;
+          var campaign = this.state.value;
+          return (
+            <div>
+              <input type="text" ref="source" value={this.state.value} placeholder="source" onChange={this.handleChange} />
+              <p>{source}</p>
+              <input type="text" ref="medium" value={this.state.value} placeholder="medium" onChange={this.handleChange} />
+              <p>{source}</p>
+              <input type="text" ref="campaign" value={this.state.value} placeholder="campaign" onChange={this.handleChange} />
+              <p>{source}</p>
+              <hr></hr>
+              <p>{link}?utm_source={source}?utm_medium={medium}?utm_campaign={campaign}</p>
+            </div>
+          );
+        }
+      });
+
+      // var Link = React.createClass({
+      //   handleChange: function(event) {
+      //     this.setState({value: event});
+      //   },
+      //   render: function () {
+      //     return (
+      //       <div>
+      //         <Source/>
+      //         <Medium/>
+      //         <Campaign/>
+      //         <p>{link}?utm_source={source}?utm_medium={medium}?utm_campaign={campaign}</p>
+      //       </div>
+      //     );
+      //   }
+      // });
+      ReactDOM.render(<Link/>, document.getElementById('container'));
+    </script>
+  </body>
+</html>
