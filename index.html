@@ -105,34 +105,18 @@
           var campaign = this.state.value;
           return (
             <div>
-              <input type="text" ref="source" value={this.state.value} placeholder="source" onChange={this.handleChange} />
+              <input type="text" ref="source" value={source} placeholder="source" onChange={this.handleChange} />
               <p>{source}</p>
-              <input type="text" ref="medium" value={this.state.value} placeholder="medium" onChange={this.handleChange} />
-              <p>{source}</p>
-              <input type="text" ref="campaign" value={this.state.value} placeholder="campaign" onChange={this.handleChange} />
-              <p>{source}</p>
+              <input type="text" ref="medium" value={medium} placeholder="medium" onChange={this.handleChange} />
+              <p>{medium}</p>
+              <input type="text" ref="campaign" value={campaign} placeholder="campaign" onChange={this.handleChange} />
+              <p>{campaign}</p>
               <hr></hr>
               <p>{link}?utm_source={source}?utm_medium={medium}?utm_campaign={campaign}</p>
             </div>
           );
         }
       });
-
-      // var Link = React.createClass({
-      //   handleChange: function(event) {
-      //     this.setState({value: event});
-      //   },
-      //   render: function () {
-      //     return (
-      //       <div>
-      //         <Source/>
-      //         <Medium/>
-      //         <Campaign/>
-      //         <p>{link}?utm_source={source}?utm_medium={medium}?utm_campaign={campaign}</p>
-      //       </div>
-      //     );
-      //   }
-      // });
       ReactDOM.render(<Link/>, document.getElementById('container'));
     </script>
   </body>
