@@ -1,53 +1,120 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <meta charset="UTF-8" />
+    <meta charset="UTF-8"/>
     <title>TRACKER</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-alpha.2/css/bootstrap.min.css" integrity="sha384-y3tfxAZXuh4HwSYylfB+J125MxIs6mR5FOHamPBG064zB+AFeWH94NdvaCBm8qnd" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
     <script src="build/react.js"></script>
     <script src="build/react-dom.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
-
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.2.3/jquery.js"></script>
+    <script src="https://npmcdn.com/react-copy-to-clipboard/build/react-copy-to-clipboard.js"></script>
+    <link rel="shortcut icon" href="https://d25purrcgqtc5w.cloudfront.net/assets/favicon-289e0c031b4cf372c8c983687342604b.ico">
   </head>
-  <body>
-    <!-- <input type="text" name="name" id="source" value=""> -->
-    <div id="container"></div>
-    <script type="text/babel">
-      var link = "https://www.honeybook.com/"
-
-      var Link = React.createClass({
-        getInitialState: function() {
-          return {
-            source: 'source',
-            medium: 'medium',
-            campaign: 'campaign',
-          };
-        },
-        handleSourceChange: function(e){
-          this.setState({source: e.target.value});
-        },
-        handleMediumChange: function(e){
-          this.setState({medium: e.target.value});
-        },
-        handleCampaignChange: function(e){
-          this.setState({campaign: e.target.value});
-        },
-        render: function () {
-          return (
-            <div>
-              <input type="text" ref="source" value={this.state.source} placeholder="source" onChange={this.handleSourceChange} />
-              <p>{this.state.source}</p>
-              <input type="text" ref="medium" value={this.state.medium} placeholder="medium" onChange={this.handleMediumChange} />
-              <p>{this.state.medium}</p>
-              <input type="text" ref="campaign" value={this.state.campaign} placeholder="campaign" onChange={this.handleCampaignChange} />
-              <p>{this.state.campaign}</p>
-              <hr></hr>
-              <p>{link}?utm_source={this.state.source}?utm_medium={this.state.medium}?utm_campaign={this.state.campaign}</p>
+  <style media="screen">
+    .row { margin: 4rem 0; }
+    .card { padding: 1rem; }
+    .card-link { padding: 2rem 1rem;margin-top:10px; }
+    .card-primary {background-color: #00607f !important; }
+    .card-green {background-color: #05ce7c !important; }
+    .card-purple {background-color: #863275 !important; }
+    .card-red {background-color: #ff675d !important; }
+    .card-honey-blue {background-color: #59bfc7 !important; }
+    .push { padding: 1rem .75rem; }
+    h6 { padding-bottom: .75rem; }
+  </style>
+  <script type="text/babel">
+    var Link = React.createClass({
+      getInitialState: function() {
+        return {
+          link: 'https://www.honeybook.com/',
+          source: 'campaign_source',
+          medium: 'campaign_medium',
+          campaign: 'campaign_name',
+        };
+      },
+      handleLinkChange: function(e){
+        this.setState({link: e.target.value});
+      },
+      handleSourceChange: function(e){
+        this.setState({source: e.target.value});
+      },
+      handleMediumChange: function(e){
+        this.setState({medium: e.target.value});
+      },
+      handleCampaignChange: function(e){
+        this.setState({campaign: e.target.value});
+      },
+      render: function () {
+        return (
+          <div>
+            <div className={'col-lg-3'}>
+              <div className={'card card-inverse card-primary'}>
+                <div className={'card-block'}>
+                  <h6 className={'card-title'}><span>Link: </span>{this.state.link}</h6>
+                  <input type="text" ref="link" className={'form-control'} value={this.state.link} placeholder="link" onChange={this.handleLinkChange} />
+                </div>
+              </div>
             </div>
-          );
-        }
-      });
-      ReactDOM.render(<Link/>, document.getElementById('container'));
-    </script>
+            <div className={'col-lg-3'}>
+              <div className={'card card-inverse card-red'}>
+                <div className={'card-block'}>
+                  <h6 className={'card-title'}><span>Source: </span>{this.state.source}</h6>
+                  <input type="text" ref="source" className={'form-control'} value={this.state.source} placeholder="source" onChange={this.handleSourceChange} />
+                </div>
+              </div>
+            </div>
+            <div className={'col-lg-3'}>
+              <div className={'card card-inverse card-purple'}>
+                <div className={'card-block'}>
+                  <h6 className={'card-title'}><span>Medium: </span>{this.state.medium}</h6>
+                  <input type="text" ref="medium" className={'form-control'} value={this.state.medium} placeholder="medium" onChange={this.handleMediumChange} />
+                </div>
+              </div>
+            </div>
+            <div className={'col-lg-3'}>
+              <div className={'card card-inverse card-green'}>
+                <div className={'card-block'}>
+                  <h6 className={'card-title'}><span>Campaign: </span>{this.state.campaign}</h6>
+                  <input type="text" ref="campaign" className={'form-control'} value={this.state.campaign} placeholder="campaign" onChange={this.handleCampaignChange} />
+                </div>
+              </div>
+            </div>
+            <div className={'col-lg-12'}>
+              <div className={'card card-link card-inverse card-honey-blue'}>
+                <div className={'card-block'}>
+                  <div className={'input-group'}>
+                    <input id="link" className={'form-control'} value={[this.state.link + '?utm_source=' + this.state.source + '?utm_medium=' + this.state.medium + '?utm_campaign=' + this.state.campaign]}></input>
+                    <CopyToClipboard text={[this.state.link + '?utm_source=' + this.state.source + '?utm_medium=' + this.state.medium + '?utm_campaign=' + this.state.campaign]} onCopy={() => this.setState({copied: true})}>
+                      <span className={'input-group-btn'}>
+                        <button id="copy-button" className={'btn btn-secondary'}><i className={'fa fa-clipboard'}></i>  Copy This Link!</button>
+                      </span>
+                    </CopyToClipboard>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        );
+      }
+    });
+    ReactDOM.render(<Link/>, document.getElementById('container'));
+  </script>
+  <body>
+    <nav class="navbar navbar-dark bg-primary" style="border-radius:0px;background:#59bfc7!important;">
+      <div class="container" style="text-align:center;">
+        <a class="navbar-brand" style="float:none;font-size:14px;letter-spacing: 3px;color:rgba(255,255,255,.7);" href="#">TRACKER</a>
+      </div>
+    </nav>
+    <div class="fluid-container">
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="">
+            <div class="" id="container"></div>
+          </div>
+        </div>
+      </div>
+    </div>
   </body>
 </html>
