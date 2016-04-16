@@ -7,7 +7,7 @@ Clone this repo
 
 #### 2) Visit The Link Builder
 
-[tracker.honeybook.com](https://tracker.honeybook.com)
+[tracker.honeybook.com](https://s3-us-west-2.amazonaws.com/tracker.honeybook.com/index.html)
 
 #### 3) Build A link
 
