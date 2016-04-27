@@ -23,14 +23,16 @@
     .card-honey-blue {background-color: #59bfc7 !important; }
     .push { padding: 1rem .75rem; }
     h6 { padding-bottom: .75rem; }
+    ul { -webkit-padding-start: 0px; margin-bottom: 0; }
+    ul li { list-style: none;}
   </style>
   <script type="text/babel">
     var Link = React.createClass({
       getInitialState: function() {
         return {
           link: 'https://www.honeybook.com/',
-          source: 'campaign_source',
-          medium: 'campaign_medium',
+          source: 'lead_source',
+          medium: 'lead_medium',
           campaign: 'campaign_name',
         };
       },
@@ -85,8 +87,8 @@
               <div className={'card card-link card-inverse card-honey-blue'}>
                 <div className={'card-block'}>
                   <div className={'input-group'}>
-                    <input id="link" className={'form-control'} value={[this.state.link + '?utm_source=' + this.state.source + '?utm_medium=' + this.state.medium + '?utm_campaign=' + this.state.campaign]}></input>
-                    <CopyToClipboard text={[this.state.link + '?utm_source=' + this.state.source + '?utm_medium=' + this.state.medium + '?utm_campaign=' + this.state.campaign]} onCopy={() => this.setState({copied: true})}>
+                    <input id="link" className={'form-control'} value={[this.state.link + '?utm_source=' + this.state.source + '&utm_medium=' + this.state.medium + '&utm_campaign=' + this.state.campaign]}></input>
+                    <CopyToClipboard text={[this.state.link + '?utm_source=' + this.state.source + '&utm_medium=' + this.state.medium + '&utm_campaign=' + this.state.campaign]} onCopy={() => this.setState({copied: true})}>
                       <span className={'input-group-btn'}>
                         <button id="copy-button" className={'btn btn-secondary'}><i className={'fa fa-clipboard'}></i>  Copy This Link!</button>
                       </span>
@@ -112,6 +114,53 @@
         <div class="col-lg-12">
           <div class="">
             <div class="" id="container"></div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col-lg-12">
+          <div class="col-lg-3">
+            <div class="card">
+              <div class="card-block">
+                <h6 class="card-title">Sources</h6>
+                <ul>
+                  <li>advertisement</li>
+                  <li>collectives</li>
+                  <li>events</li>
+                  <li>referral</li>
+                  <li>risingtide</li>
+                  <li>partner</li>
+                  <li>prospecting</li>
+                  <li>socialmedia</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-3">
+            <div class="card">
+              <div class="card-block">
+                <h6 class="card-title">Mediums</h6>
+                <ul>
+                  <li>email</li>
+                  <li>social</li>
+                  <li>cpc</li>
+                  <li>events</li>
+                  <li>fieldmarketing</li>
+                  <li>referral</li>
+                </ul>
+              </div>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="card">
+              <div class="card-block">
+                <h6 class="card-title">Link Examples</h6>
+                  <li>Referral</li>
+                  <li>https://www.honeybook.com/?mbsy=dWnjd&mbsy_source=240e3e03-6c63-46bd-8db9-79a17594452d&campaignid=30703?utm_source=referral&utm_medium=referral&utm_campaign=educator</li>
+                  <li>Events</li>
+                  <li>https://www.honeybook.com/?utm_source=event&utm_medium=email&utm_campaign=wppi_partner</li>
+              </div>
+            </div>
           </div>
         </div>
       </div>
